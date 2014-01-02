@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <style>
+      h2 {font-family: Helvetica}
+      td {font-family: Helvetica}
+      li {font-family: Helvetica}
+      p {font-family: Sans-serif;
+         font-size: 11px}
+    </style>
+  </head>
+  <body>
+    <script>
+    function calcBonus () {
+      $('.results').empty();
+      var possibleFares = [];
+      var balancesToAdd = [];
+      var possibleToAdd = [];
+      var $startingBalance = $('#currentBal').val();
+      var $maximumToAdd = $('#maxToAdd').val();
+      var $farePrice = $('#farePrices option:selected').val();
+      var possibleFareNum = Math.ceil((($maximumToAdd - $startingBalance) * 1.05) / $farePrice) + 1;
+      for (var i = 0; i < possibleFareNum; i++) {
+        possibleFares[i] = $farePrice * [i];
+      }
+      for (var i = 0; i < possibleFares.length; i++) {
+        balancesToAdd[i] = (Math.round(((possibleFares[i] - $startingBalance)/1.05)*100))/100
+      }
+      for (var i = 1; i < balancesToAdd.length; i++) {
+        if (Math.round((balancesToAdd[i] % 0.05) * 100)/100  % 0.05 == 0) {
+          possibleToAdd.push(balancesToAdd[i]);
+        }
+      }
+      for (var i = 0; i < possibleToAdd.length; i++) { 
+        var bonus = (Math.round((0.05 * possibleToAdd[i])*100) / 100).toFixed(2);
+        var toAdd = possibleToAdd[i].toFixed(2);
+        var endFare = (parseFloat($startingBalance) + parseFloat(bonus) + parseFloat(toAdd)).toFixed(2);
+        if (endFare % $farePrice === 0 && toAdd > 5) {
+        $('.results').append('<li> Add <strong>$' + toAdd + '</strong>' + ' to $' + $startingBalance + ' for a bonus of $' + bonus + '<br>' +' and a total of <strong>$' + endFare + '</strong> (' + endFare/$farePrice + ' rides).</li><br>');
+        }
+      }
+    }
+
+    $(document).ready(function(){
+      $('#calc').click(function(){
+      calcBonus();
+      return false;
+      //$('#currentBal').val('');
+      //$('#maxToAdd').val('');
+      //$('#currentBal').focus();
+      });
+      $('#reset').click(function(){
+        $('.results').empty();
+      });
+    });
+
+    </script>
+
+    <h2>Metrocard Bonus Calculator</h2>
+
+    <form>
+    	<table>
+    		<tr>
+    			<td align='right'> Current Balance: $ </td>
+    			<td align ='left'><input id="currentBal" type="text" style="width:185px" value ="0" title="How much money is currently on your Metrocard?"/></td>
+    		</tr>
+    		<tr>
+				<td align='right'> Maximum to Add: $</td>
+				<td align='left'><input id="maxToAdd" type="text" style="width:185px" value = "40" title="What is the maximum amount that you want to add?"/></td>
+    		</tr>
+    		<tr>
+    			<td align='right'>Fare: </td>
+    			<td>
+    				<select id="farePrices">
+  						<option value=1.25>$1.25 (Reduced Fare)</option>
+  						<option selected='selected' value=2.50>$2.50 (Regular Fare)</option>
+  						<option value=3.00>$3.00 (Senior Express Bus)</option>
+  						<option value=6.00>$6.00 (Express Bus)</option>
+					</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td></td>
+    			<td><button id="calc">Calculate</button><button id ="reset" type="reset" value="Reset">Reset Form</button></td>
+    		</tr>
+
+    	</table>
+    <form>
+
+    <ul class="results">
+
+    </ul>
+    <p>*MTA machines only allow you to add amounts divisible by 5 cents.<br>
+       **MTA Bonus is only 5% after spending a minimum of $5.</p>
+
+  </body>
+</html>
