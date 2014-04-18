@@ -19,7 +19,7 @@
       var possibleFares = [];
       var balancesToAdd = [];
       var possibleToAdd = [];
-      var $startingBalance = $('#currentBal').val();
+      var $startingBalance = parseFloat(Math.round($('#currentBal').val() * 100) / 100).toFixed(2);
       var $maximumToAdd = $('#maxToAdd').val();
       var $farePrice = $('#farePrices option:selected').val();
       var possibleFareNum = Math.ceil((($maximumToAdd - $startingBalance) * 1.05) / $farePrice) + 1;
