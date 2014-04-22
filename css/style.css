@@ -1,0 +1,22 @@
+body { 
+  margin: auto; 
+  margin-top: auto;
+  width: 350px; 
+}
+
+h2 {
+  font-family: Helvetica;
+}
+
+td {
+  font-family: Helvetica;
+}
+
+li {
+  font-family: Helvetica;
+}
+
+p {
+  font-family: Sans-serif;
+  font-size: 11px
+}
