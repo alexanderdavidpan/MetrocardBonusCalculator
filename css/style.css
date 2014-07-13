@@ -1,19 +1,24 @@
 body { 
+  font-family: Helvetica;
   margin: auto; 
   margin-top: auto;
-  width: 350px; 
+  width: 350px;
 }
 
 h2 {
-  font-family: Helvetica;
+  text-align: center;
 }
 
-td {
-  font-family: Helvetica;
+tr td:first-child {
+  text-align: right;
 }
 
-li {
-  font-family: Helvetica;
+tr td:last-child {
+  text-align: left;
+}
+
+tr td input {
+  width: 185px;
 }
 
 p {
