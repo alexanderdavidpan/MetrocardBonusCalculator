@@ -1,11 +1,11 @@
 body { 
+  font-family: Helvetica;
   margin: auto; 
   margin-top: auto;
-  width: 350px; 
+  width: 350px;
 }
 
 h2 {
-  font-family: Helvetica;
   text-align: center;
 }
 
@@ -19,14 +19,6 @@ tr td:last-child {
 
 tr td input {
   width: 185px;
-}
-
-td {
-  font-family: Helvetica;
-}
-
-li {
-  font-family: Helvetica;
 }
 
 p {
