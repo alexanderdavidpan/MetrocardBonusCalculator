@@ -22,18 +22,7 @@ function calcBonus () {
     var toAdd = possibleToAdd[i].toFixed(2);
     var endFare = (parseFloat($startingBalance) + parseFloat(bonus) + parseFloat(toAdd)).toFixed(2);
     if (endFare % $farePrice === 0 && toAdd > 5) {
-      $('.results').append('<li> Add <strong>$' + toAdd + '</strong>' + ' to $' + $startingBalance + ' for a bonus of $' + bonus + '<br>' +' and a total of <strong>$' + endFare + '</strong> (' + endFare/$farePrice + ' rides).</li><br>');
+      $('ul.results').append('<li> Add <strong>$' + toAdd + '</strong>' + ' to $' + $startingBalance + ' for a bonus of $' + bonus + '<br>' +' and a total of <strong>$' + endFare + '</strong> (' + endFare/$farePrice + ' rides).</li><br>');
     }
   }
 }
-
-$(document).ready(function(){
-  $('#calc').click(function(){
-    $('.results').empty();
-    calcBonus();
-    return false;
-  });
-  $('#reset').click(function(){
-    $('.results').empty();
-  });
-});
