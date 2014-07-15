@@ -1,7 +1,7 @@
 function calcBonus () {
-  var possibleFares = [];
-  var balancesToAdd = [];
-  var possibleToAdd = [];
+  var possibleFares = new Array();
+  var balancesToAdd = new Array();
+  var possibleToAdd = new Array();
   var $startingBalance = parseFloat(Math.round($('#currentBal').val() * 100) / 100).toFixed(2);
   var $maximumToAdd = $('#maxToAdd').val();
   var $farePrice = $('#farePrices option:selected').val();
