@@ -1,5 +1,4 @@
 function calcBonus () {
-  $('.results').empty();
   var possibleFares = [];
   var balancesToAdd = [];
   var possibleToAdd = [];
@@ -30,6 +29,7 @@ function calcBonus () {
 
 $(document).ready(function(){
   $('#calc').click(function(){
+    $('.results').empty();
     calcBonus();
     return false;
   });
