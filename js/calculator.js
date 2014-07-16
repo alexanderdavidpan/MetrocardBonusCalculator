@@ -18,7 +18,7 @@ function calcBonus (startingBalance, maximumToAdd, farePrice) {
     var bonus = (Math.round((0.05 * possibleToAdd[i])*100) / 100).toFixed(2);
     var toAdd = possibleToAdd[i].toFixed(2);
     var endFare = (parseFloat(startingBalance) + parseFloat(bonus) + parseFloat(toAdd)).toFixed(2);
-    if (endFare % farePrice === 0 && toAdd > 5) {
+    if (endFare % farePrice === 0 && maximumToAdd > toAdd && toAdd > 5) {
       $('ul.results').append('<li> Add <strong>$' + toAdd + '</strong>' + ' to $' + startingBalance + ' for a bonus of $' + bonus + '<br>' +' and a total of <strong>$' + endFare + '</strong> (' + endFare/farePrice + ' rides).</li><br>');
     }
   }
