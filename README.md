@@ -10,4 +10,4 @@ All contributions are welcome.
 
 ## License
 
-Copyright (C) 2014 Alexander Pan
+Copyright &copy; 2014 Alexander Pan. All rights reserved.
